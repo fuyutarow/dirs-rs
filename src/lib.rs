@@ -284,7 +284,7 @@ mod tests {
         println!("audio_dir:      {:?}", ::audio_dir());
         println!("home_dir:       {:?}", ::desktop_dir());
         println!("cache_dir:      {:?}", ::document_dir());
-        println!("config_dir:     {:?}", ::download_dir());
+        println!("download_dir:   {:?}", ::download_dir());
         println!("font_dir:       {:?}", ::font_dir());
         println!("picture_dir:    {:?}", ::picture_dir());
         println!("public_dir:     {:?}", ::public_dir());
