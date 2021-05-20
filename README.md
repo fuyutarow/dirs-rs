@@ -1,3 +1,18 @@
+# `fuyutarow/dirs` vs `dirs`
+
+fuyutarow/dirs has added a new api settings_dir.
+
+On mac, $HOME/.config is used by many applications (yarn, neovim, etc.) and is also a value used by gtk applications. [[ref](https://wiki.gnucash.org/wiki/Configuration_Locations#USER_CONFIG_HOME)]
+
+| Function name    | Value on Linux/Redox                                                                             | Value on Windows                  | Value on macOS                              |
+| ---------------- | ------------------------------------------------------------------------------------------------ | --------------------------------- | ------------------------------------------- |
+| `settings_dir`   | `Some($XDG_CONFIG_HOME)`        or `Some($HOME`/.config`)`                                       | `Some({FOLDERID_RoamingAppData})` | `Some($HOME`/.config`)`                     |
+
+
+
+* * *
+
+
 [![crates.io](https://img.shields.io/crates/v/dirs.svg)](https://crates.io/crates/dirs)
 [![API documentation](https://docs.rs/dirs/badge.svg)](https://docs.rs/dirs/)
 ![actively developed](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
@@ -109,6 +124,7 @@ use `ProjectDirs` of the [directories](https://github.com/dirs-dev/directories-r
 | `home_dir`       | `Some($HOME)`                                                                                    | `Some({FOLDERID_Profile})`        | `Some($HOME)`                               |
 | `cache_dir`      | `Some($XDG_CACHE_HOME)`         or `Some($HOME`/.cache`)`                                        | `Some({FOLDERID_LocalAppData})`   | `Some($HOME`/Library/Caches`)`              |
 | `config_dir`     | `Some($XDG_CONFIG_HOME)`        or `Some($HOME`/.config`)`                                       | `Some({FOLDERID_RoamingAppData})` | `Some($HOME`/Library/Application Support`)` |
+| `settings_dir`   | `Some($XDG_CONFIG_HOME)`        or `Some($HOME`/.config`)`                                       | `Some({FOLDERID_RoamingAppData})` | `Some($HOME`/.config`)`                     |
 | `data_dir`       | `Some($XDG_DATA_HOME)`          or `Some($HOME`/.local/share`)`                                  | `Some({FOLDERID_RoamingAppData})` | `Some($HOME`/Library/Application Support`)` |
 | `data_local_dir` | `Some($XDG_DATA_HOME)`          or `Some($HOME`/.local/share`)`                                  | `Some({FOLDERID_LocalAppData})`   | `Some($HOME`/Library/Application Support`)` |
 | `executable_dir` | `Some($XDG_BIN_HOME`/../bin`)`  or `Some($XDG_DATA_HOME`/../bin`)` or `Some($HOME`/.local/bin`)` | `None`                            | `None`                                      |
