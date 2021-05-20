@@ -1,6 +1,6 @@
-# `fuyutarow/dirs` vs `dirs`
+# `fuyutarow/dirs-rs` vs `dirs-rs`
 
-fuyutarow/dirs has added a new api settings_dir.
+`fuyutarow/dirs` has added a new api `settings_dir`.
 
 On mac, $HOME/.config is used by many applications (yarn, neovim, etc.) and is also a value used by gtk applications. [[ref](https://wiki.gnucash.org/wiki/Configuration_Locations#USER_CONFIG_HOME)]
 
