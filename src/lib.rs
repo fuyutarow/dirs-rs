@@ -32,13 +32,15 @@ use wasm as sys;
 
 #[cfg(not(any(
     target_os = "windows",
-    target_os = "macos", target_os = "ios",
+    target_os = "macos",
+    target_os = "ios",
     target_arch = "wasm32"
 )))]
 mod lin;
 #[cfg(not(any(
     target_os = "windows",
-    target_os = "macos", target_os = "ios",
+    target_os = "macos",
+    target_os = "ios",
     target_arch = "wasm32"
 )))]
 use lin as sys;
@@ -97,6 +99,18 @@ pub fn cache_dir() -> Option<PathBuf> {
 /// | Windows | `{FOLDERID_RoamingAppData}`           | C:\Users\Alice\AppData\Roaming           |
 pub fn config_dir() -> Option<PathBuf> {
     sys::config_dir()
+}
+/// Returns the path to the user's settings directory.
+///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None`.
+///
+/// |Platform | Value                                 | Example                                  |
+/// | ------- | ------------------------------------- | ---------------------------------------- |
+/// | Linux   | `$XDG_CONFIG_HOME` or `$HOME`/.config | /home/alice/.config                      |
+/// | macOS   | `$HOME`/.config                       | /Users/Alice/Library/Application Support |
+/// | Windows | `{FOLDERID_RoamingAppData}`           | C:\Users\Alice\AppData\Roaming           |
+pub fn settings_dir() -> Option<PathBuf> {
+    sys::settings_dir()
 }
 /// Returns the path to the user's data directory.
 ///
@@ -276,6 +290,7 @@ mod tests {
         println!("home_dir:       {:?}", ::home_dir());
         println!("cache_dir:      {:?}", ::cache_dir());
         println!("config_dir:     {:?}", ::config_dir());
+        println!("settings_dir:   {:?}", ::settings_dir());
         println!("data_dir:       {:?}", ::data_dir());
         println!("data_local_dir: {:?}", ::data_local_dir());
         println!("executable_dir: {:?}", ::executable_dir());
